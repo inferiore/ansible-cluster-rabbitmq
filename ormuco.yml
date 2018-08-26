@@ -1,0 +1,16 @@
+---
+- hosts: rabbitmq-server
+  remote_user: "{{ user }}"
+  become: yes
+  vars_files:
+    - variables.yml
+   
+  task: 
+    - name: install default packages for docker installation
+      apt:
+        pkg="{{item}}" 
+        state=present 
+        update_cache=yes
+      with_items: "{{default-packages-doker-installation}}"
+    
+    

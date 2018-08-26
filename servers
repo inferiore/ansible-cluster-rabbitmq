@@ -1,0 +1,4 @@
+[rabbitmq-server]
+node1 ansible_ssh_host=18.188.197.145
+node2 ansible_ssh_host=18.223.114.44
+node3 ansible_ssh_host=18.223.119.19
