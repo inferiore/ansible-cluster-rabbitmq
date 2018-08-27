@@ -12,4 +12,41 @@
         update_cache=yes
       with_items: "{{default_packages_doker_installation}}"
     
+    - name: Add an Apt signing key for docker
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+      
+    - name: Add stable repository for docker
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xanial stable
+        state: present
+    
+    - name: Update repositories and install docker-ce package
+      apt:
+        name: docker-ce
+        update_cache: yes
+      
+    - name: Install docker Python library
+      pip:
+        name: docker-py
+        state: latest
+      
+    - name: Create a data container for RabbitMQ
+      docker_container:
+        name: rabbitmq 
+        image: ubuntu:16.04
+        hostname: rabbitmq01
+        network_mode: host
+        interactive: yes
+        command: bash
+        state: started
+        etc_hosts: "{{item}}" 
+      when: inventory_hostname == ansible_play_hosts[0]
+      with_items: "{{name_rabbitmq_servers}}"
+    
+        
+        
+    
+    
     
