@@ -5,6 +5,9 @@
     - variables.yml
    
   tasks: 
+    - name: delete docker.source.list
+      command: rm /etc/apt/sources.list.d/download_docker_com_linux_ubuntu.list
+
     - name: install default packages for docker installation
       apt:
         pkg="{{item}}" 
@@ -16,10 +19,10 @@
       apt_key:
         url: https://download.docker.com/linux/ubuntu/gpg
         state: present
-      
+        
     - name: Add stable repository for docker
       apt_repository:
-        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu xanial stable"
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
         state: present
     
     - name: Update repositories and install docker-ce package
