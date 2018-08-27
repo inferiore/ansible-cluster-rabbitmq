@@ -4,7 +4,7 @@
   vars_files:
     - variables.yml
    
-  task: 
+  tasks: 
     - name: install default packages for docker installation
       apt:
         pkg="{{item}}" 
