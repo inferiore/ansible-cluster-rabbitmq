@@ -31,7 +31,12 @@
       pip:
         name: docker-py
         state: latest
-      
+    
+    - name: remove container
+      docker_container:
+        name: rabbitmq
+        state: absent
+    
     - name: Create a data container for RabbitMQ 01
       docker_container:
         name: rabbitmq 
@@ -61,7 +66,8 @@
           rabbitmq02: 192.168.3.4
           rabbitmq03: 192.168.3.19 
       when: inventory_hostname == ansible_play_hosts[1]
-        
+    
+    
     - name: Create a data container for RabbitMQ 03
       docker_container:
         name: rabbitmq 
