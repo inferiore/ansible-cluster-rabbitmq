@@ -105,6 +105,6 @@
       command: docker exec rabbitmq /bin/bash -c "echo -n 'CSHTMTTZCZQXNMIOXQBA' > /var/lib/rabbitmq/.erlang.cookie; chown rabbitmq:rabbitmq /var/lib/rabbitmq/.erlang.cookie; chmod 400 /var/lib/rabbitmq/.erlang.cookie; service rabbitmq-server start"         
      
     - name: join node 2 and 3 to node 1
-      command: docker exec rabbitmq /bin/bash -c "rabbitmqctl stop_app ; rabbitmqctl join_cluster rabbit@rabbit01; rabbitmqctl start_app"         
+      command: docker exec rabbitmq /bin/bash -c "rabbitmqctl stop_app ; rabbitmqctl join_cluster rabbit@rabbitmq01; rabbitmqctl start_app"         
       when: inventory_hostname != ansible_play_hosts[0]      
     
