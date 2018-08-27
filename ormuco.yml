@@ -84,19 +84,19 @@
       command: docker exec rabbitmq /bin/bash -c "wget -O - 'https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc' | apt-key add - "
       
     - name: Add the file source for erlang
-      command: docker exec rabbitmq /bin/bash -c "echo "deb http://dl.bintray.com/rabbitmq/debian xenial erlang " | tee /etc/apt/sources.list.d/bintray.erlang.list; apt-get update"
+      command: docker exec rabbitmq /bin/bash -c "echo 'deb http://dl.bintray.com/rabbitmq/debian xenial erlang ' | tee /etc/apt/sources.list.d/bintray.erlang.list; apt-get update"
       
     - name: Get key for RabbitMQ
-      command: docker exec rabbitmq /bin/bash -c "echo "wget -O - 'https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc' | apt-key add - "
+      command: docker exec rabbitmq /bin/bash -c "echo 'wget -O - 'https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc' | apt-key add - "
       
     - name: Adding the file source file for rabbitMQ
-      command: docker exec rabbitmq /bin/bash -c "echo "deb https://dl.bintray.com/rabbitmq/debian xenial main" | tee /etc/apt/sources.list.d/bintray.rabbitmq.list;apt-get update"
+      command: docker exec rabbitmq /bin/bash -c "echo 'deb https://dl.bintray.com/rabbitmq/debian xenial main' | tee /etc/apt/sources.list.d/bintray.rabbitmq.list;apt-get update"
       
     - name: rabbitMQ installation and stop service
       command: docker exec rabbitmq /bin/bash -c "apt-get install rabbitmq-server; service rabbitmq-server stop"     
       
     - name: set erland.cooke in all nodes
-      command: docker exec rabbitmq /bin/bash -c "echo -n "CSHTMTTZCZQXNMIOXQBA" > /var/lib/rabbitmq/.erlang.cookie; chown rabbitmq:rabbitmq /var/lib/rabbitmq/.erlang.cookie; chmod 400 /var/lib/rabbitmq/.erlang.cookie; service rabbitmq-server start"         
+      command: docker exec rabbitmq /bin/bash -c "echo -n 'CSHTMTTZCZQXNMIOXQBA' > /var/lib/rabbitmq/.erlang.cookie; chown rabbitmq:rabbitmq /var/lib/rabbitmq/.erlang.cookie; chmod 400 /var/lib/rabbitmq/.erlang.cookie; service rabbitmq-server start"         
      
     - name: join node 2 and 3 to node 1
       command: docker exec rabbitmq /bin/bash -c "rabbitmqctl stop_app ; rabbitmqctl join_cluster rabbit@rabbit01; rabbitmqctl start_app"         
