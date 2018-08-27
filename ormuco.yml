@@ -19,7 +19,7 @@
       
     - name: Add stable repository for docker
       apt_repository:
-        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xanial stable
+        repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu xanial stable"
         state: present
     
     - name: Update repositories and install docker-ce package

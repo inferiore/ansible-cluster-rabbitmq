@@ -13,4 +13,7 @@ default_packages_rabbtimq_installation:
  - software-properties-common
  - wget
  - nano
- 
+name_rabbitmq_servers:
+ - rabbitmq01:192.168.3.9
+ - rabbitmq02:192.168.3.4
+ - rabbitmq03:192.168.3.19
