@@ -87,13 +87,13 @@
       command: docker exec rabbitmq /bin/bash -c "apt-get update -y; apt-get install apt-transport-https ca-certificates curl software-properties-common wget -y"
       
     - name:  add a key used to sign erlang
-      command: docker exec rabbitmq /bin/bash -c "wget -O - 'https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc' | sudo apt-key add - "
+      command: docker exec rabbitmq /bin/bash -c "wget -O - 'https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc' | apt-key add - "
       
     - name: Add the file source for erlang
       command: docker exec rabbitmq /bin/bash -c "echo 'deb https://dl.bintray.com/rabbitmq/debian xenial erlang ' | tee /etc/apt/sources.list.d/bintray.erlang.list; apt-get update"
     
     - name:  add a key used to sign RabbitMQ
-      command: docker exec rabbitmq /bin/bash -c "wget -O - 'https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc' | sudo apt-key add - "
+      command: docker exec rabbitmq /bin/bash -c "wget -O - 'https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc' | apt-key add - "
      
     - name: Adding the file source for rabbitMQ
       command: docker exec rabbitmq /bin/bash -c "echo 'deb https://dl.bintray.com/rabbitmq/debian xenial main erlang' | tee /etc/apt/sources.list.d/bintray.rabbitmq.list;apt-get update"
