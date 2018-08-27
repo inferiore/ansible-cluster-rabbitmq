@@ -5,6 +5,7 @@ default_packages_doker_installation:
  - ca-certificates
  - curl
  - software-properties-common
+ - python-pip
  
 default_packages_rabbtimq_installation:
  - apt-transport-https 
