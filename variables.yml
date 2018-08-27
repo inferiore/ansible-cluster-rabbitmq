@@ -1,13 +1,12 @@
 ---
-user:ubuntu
-default-packages-doker-installation:
+user: ubuntu
+default_packages_doker_installation:
  - apt-transport-https 
  - ca-certificates
  - curl
  - software-properties-common
  
- 
- default-packages-rabbtimq-installation:
+ default_packages_rabbtimq_installation:
  - apt-transport-https 
  - ca-certificates
  - curl

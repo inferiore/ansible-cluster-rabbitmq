@@ -10,6 +10,6 @@
         pkg="{{item}}" 
         state=present 
         update_cache=yes
-      with_items: "{{default-packages-doker-installation}}"
+      with_items: "{{default_packages_doker_installation}}"
     
     
