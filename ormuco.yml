@@ -78,7 +78,7 @@
       when: inventory_hostname == ansible_play_hosts[2]
       
     - name: install basic packages on containers
-      command: docker exec rabbitmq /bin/bash -c "apt-get update -y; apt-get install apt-transport-https  ca-certificates curl software-properties-common wget"
+      command: docker exec rabbitmq /bin/bash -c "apt-get update -y; apt-get install apt-transport-https ca-certificates curl software-properties-common wget -y"
       
     - name:  add a key used to sign RabbitMQ
       command: docker exec rabbitmq /bin/bash -c "wget -O - 'https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc' | apt-key add - "
@@ -93,7 +93,7 @@
       command: docker exec rabbitmq /bin/bash -c "echo 'deb https://dl.bintray.com/rabbitmq/debian xenial main' | tee /etc/apt/sources.list.d/bintray.rabbitmq.list;apt-get update"
       
     - name: rabbitMQ installation and stop service
-      command: docker exec rabbitmq /bin/bash -c "apt-get install rabbitmq-server; service rabbitmq-server stop"     
+      command: docker exec rabbitmq /bin/bash -c "apt-get install rabbitmq-server -y; service rabbitmq-server stop"     
       
     - name: set erland.cooke in all nodes
       command: docker exec rabbitmq /bin/bash -c "echo -n 'CSHTMTTZCZQXNMIOXQBA' > /var/lib/rabbitmq/.erlang.cookie; chown rabbitmq:rabbitmq /var/lib/rabbitmq/.erlang.cookie; chmod 400 /var/lib/rabbitmq/.erlang.cookie; service rabbitmq-server start"         
