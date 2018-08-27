@@ -41,10 +41,12 @@
         interactive: yes
         command: bash
         state: started
-        etc_hosts: "{{item}}" 
+        etc_hosts: 
+          rabbitmq01:192.168.3.9
+          rabbitmq02:192.168.3.4
+          rabbitmq03:192.168.3.19 
       when: inventory_hostname == ansible_play_hosts[0]
-      with_items: "{{name_rabbitmq_servers}}"
-    
+      
         
         
     
