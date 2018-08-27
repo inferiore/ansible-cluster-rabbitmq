@@ -78,7 +78,7 @@
       when: inventory_hostname == ansible_play_hosts[2]
       
     - name: install basic packages on containers
-      command: docker exec rabbitmq /bin/bash -c "apt-get update -y; apt-get install pt-transport-https  ca-certificates curl software-properties-common wget"
+      command: docker exec rabbitmq /bin/bash -c "apt-get update -y; apt-get install apt-transport-https  ca-certificates curl software-properties-common wget"
       
     - name:  add a key used to sign RabbitMQ
       command: docker exec rabbitmq /bin/bash -c "wget -O - 'https://dl.bintray.com/rabbitmq/Keys/rabbitmq-release-signing-key.asc' | apt-key add - "
